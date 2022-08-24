@@ -4,11 +4,11 @@ interface Calculable{
 	double PI=3.14;
 	int sum(int v1, int v2);
 }
-interface Printavle{
+interface Printable{
 	void print();
 }
 //하나의 class 에 여래개의 interface 구현 가능
-class RealCal implements Calculable,Printavle{
+class RealCal implements Calculable,Printable{
 	public int sum(int v1, int v2) {
 		return v1+v2;
 	}
@@ -17,12 +17,23 @@ class RealCal implements Calculable,Printavle{
 		System.out.println("This is RealCal!!!");
 	}
 }
+class AdvancedPrint implements Printable{
+	public void print() {
+		System.out.println("This is Print!!!");
+	}
+	
+}
 public class InterfaceApp {
 	public static void main(String[] args) {
 		RealCal c= new RealCal();
 		System.out.println(c.sum(2,1));
 		c.print();
 		System.out.println(c.PI);
+		
+		//다형성!!!!
+		//Interface 를 타입으로 줄 수 있으며 Interface에 제약된 클레스의 기능 만 사용 할 수 있다. 다른 기능늘은 숨겨짐. 호환성 보장
+		Printable p=new AdvancedPrint();
+		p.print();
 	}
 
 }
